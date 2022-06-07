@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateDiaDisponiblesTable extends Migration
 {
@@ -13,9 +13,13 @@ class CreateDiaDisponiblesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dia_disponibles', function (Blueprint $table) {
-            $table->id();
+        Schema::create('dias_disponibles', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
+            $table->integer("cantidad");
+            $table->integer("periodo");
+            $table->integer('empleados_id')->unsigned();
+            $table->foreign('empleados_id')->references('id')->on('empleados');
         });
     }
 
