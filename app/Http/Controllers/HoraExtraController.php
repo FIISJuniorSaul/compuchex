@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\HoraExtra;
+use App\Empleado;
 use Illuminate\Http\Request;
 
 class HoraExtraController extends Controller
@@ -13,7 +15,12 @@ class HoraExtraController extends Controller
      */
     public function index()
     {
-        //
+
+        $horas = HoraExtra::all();
+        $empleados = Empleado::all();
+
+        return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
+
     }
 
     /**
@@ -23,7 +30,10 @@ class HoraExtraController extends Controller
      */
     public function create()
     {
-        //
+
+        $empleados = Empleado::all();
+        return view("horasextras.add",['empleados'=>$empleados]);
+
     }
 
     /**
@@ -34,16 +44,22 @@ class HoraExtraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $horanuevo = HoraExtra::create($request->all());
+        $empleados = Empleado::all();
+        $horas = HoraExtra::all();
+
+        return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(HoraExtra $horaExtra)
     {
         //
     }
@@ -51,34 +67,42 @@ class HoraExtraController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
-        //
+        $empleados = Empleado::all();
+        $empleado = Empleado::find($id);
+        return view ("horasextras.edit",['empleados'=>$empleados,'empleado'=>$empleado]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $horaExtra = HoraExtra::create($request->all());
+        $empleados = Empleado::all();
+        $horas = HoraExtra::all();
+
+        return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\HoraExtra  $horaExtra
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+
+        HoraExtra::destroy($id);
+        return redirect()->back()->withErrors(['Hora Extra Eliminada Correctamente']);
     }
 }

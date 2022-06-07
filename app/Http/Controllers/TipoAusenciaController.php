@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\TipoAusencia;
 use Illuminate\Http\Request;
+use App\Empleado;
 
 class TipoAusenciaController extends Controller
 {
@@ -13,7 +15,9 @@ class TipoAusenciaController extends Controller
      */
     public function index()
     {
-        //
+        $empleados = Empleado::all();
+        $tipos = TipoAusencia::all();
+        return view('tiposausencia.list', ['tipos' => $tipos,'empleados'=>$empleados]);
     }
 
     /**
@@ -22,8 +26,9 @@ class TipoAusenciaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {        $empleados = Empleado::all();
+
+        return view('tiposausencia.add',['empleados'=>$empleados]);
     }
 
     /**
@@ -34,16 +39,29 @@ class TipoAusenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empleados = Empleado::all();
+
+        if ($request->has(['remunerada'])) {
+            $tipoAusencia = TipoAusencia::create($request->all());
+            $tipos = TipoAusencia::all();
+            return view('tiposausencia.list', ['tipos' => $tipos,'empleados'=>$empleados]);
+        } else {
+           $request['remunerada'] = 0;
+            $tipoAusencia = TipoAusencia::create($request->all());
+           $tipos = TipoAusencia::all();
+           return view('tiposausencia.list', ['tipos' => $tipos,'empleados'=>$empleados]);
+
+        }
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TipoAusencia  $tipoAusencia
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TipoAusencia $tipoAusencia)
     {
         //
     }
@@ -51,10 +69,10 @@ class TipoAusenciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\TipoAusencia  $tipoAusencia
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TipoAusencia $tipoAusencia)
     {
         //
     }
@@ -63,10 +81,10 @@ class TipoAusenciaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\TipoAusencia  $tipoAusencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TipoAusencia $tipoAusencia)
     {
         //
     }
@@ -74,10 +92,10 @@ class TipoAusenciaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\TipoAusencia  $tipoAusencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TipoAusencia $tipoAusencia)
     {
         //
     }

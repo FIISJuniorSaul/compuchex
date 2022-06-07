@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\SalidaParticular;
+use App\Empleado;
 class SalidasParticularesController extends Controller
 {
     /**
@@ -13,7 +14,12 @@ class SalidasParticularesController extends Controller
      */
     public function index()
     {
-        //
+        $empleados = Empleado::where('id', 1)->get();
+        $salidas = SalidaParticular::with('empleado')->get();
+        return view('salidas.index', [
+            'salidas' => $salidas,
+            'empleados' => $empleados,
+        ]);
     }
 
     /**
@@ -23,7 +29,8 @@ class SalidasParticularesController extends Controller
      */
     public function create()
     {
-        //
+        $empleados = Empleado::all();
+        return view('salidas.add', ['empleados' => $empleados]);
     }
 
     /**
@@ -34,7 +41,11 @@ class SalidasParticularesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $horanuevo = SalidaParticular::create($request->all());
+        $empleados = Empleado::all();
+        $horas = SalidaParticular::all();
+
+        return redirect()->route('salidas.index');
     }
 
     /**
@@ -79,6 +90,9 @@ class SalidasParticularesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SalidaParticular::destroy($id);
+        return redirect()
+            ->route('salidas.index')
+            ->withErrors(['Eliminado Correctamente']);
     }
 }
