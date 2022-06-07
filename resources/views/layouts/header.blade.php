@@ -109,7 +109,7 @@
                   <li class="{{ Route::is('empleados.show') ? 'active' : null }}">
                      <a href="javascript:void(0);" class="menu-toggle">
                      <i class="material-icons">person_pin</i>
-                     <span>Gestios de Empleados</span>
+                     <span>Gestión de Empleados</span>
                      </a>
                      <ul class="ml-menu">
                      
@@ -123,7 +123,7 @@
                         <li class="{{ Route::is('listar') ? 'active' : null }}" >
                            <a href="{{ route('listar') }}">
                            <i class="material-icons"></i>
-                           <span>Lista empleados</span>
+                           <span>Lista Empleados</span>
                            </a>
                            @foreach($empleados as $emp)
                         <li >
@@ -210,12 +210,12 @@
                   <li class="{{ Route::is('horas.*') ? 'active' : null }}">
                      <a href="javascript:void(0);" class="menu-toggle">
                      <i class="material-icons">timer</i>
-                     <span>Horas Extra</span>
+                     <span>Horas Extras</span>
                      </a>
                      <ul class="ml-menu">
                         <li class="{{ Route::is('horas.index') ? 'active' : null }}" >
                            <a href="{{ route('horas.index') }}">
-                           <span>Listar Horas Extra</span>
+                           <span>Listar Horas Extras</span>
                            </a>
                         </li>
                         <li class="{{ Route::is('horas.create') ? 'active' : null }}" >
@@ -250,7 +250,7 @@
             <!-- Footer -->
             <div class="legal">
                <div class="copyright">
-                  &copy; 2021 <a href="javascript:void(0);">Tedy ♥ </a>.
+                  &copy; 2022 <a href="javascript:void(0);">CompuCHEX</a>.
                </div>
                <div class="version">
                   <b>Version: </b> 0.0.1
