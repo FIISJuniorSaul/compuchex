@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Condicion;
 use Illuminate\Http\Request;
 
 class CondicionesController extends Controller
@@ -23,7 +23,7 @@ class CondicionesController extends Controller
      */
     public function create()
     {
-        //
+        return view('condiciones.add');
     }
 
     /**
@@ -34,7 +34,9 @@ class CondicionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $condicion = Condicion::create($request->all());
+        
+        return $condicion;
     }
 
     /**

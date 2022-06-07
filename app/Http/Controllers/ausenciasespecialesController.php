@@ -3,82 +3,67 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Empleado;
 
-class ausenciasespecialesaController extends Controller
+class ausenciasespecialescontroller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function maternidad(){
+        $empleados = Empleado::all();
+        $empleados_maternidad = Empleado::where("maternidad",1)->get();
+                return view("especiales.maternidad",["empleados"=>$empleados,"empleados_maternidad"=>$empleados_maternidad]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function agregarMaternidad(){
+        $empleados = Empleado::all();
+        return view ("especiales.maternidad_add",["empleados"=>$empleados]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function guardarMaternidad(Request $request){
+        $empleados = Empleado::all();
+
+        $empleados_maternidad = Empleado::where("maternidad",1)->get();
+      //  return view("especiales.lactancia",["empleados"=>$empleados,"empleados_lactancia"=>$empleados_lactancia]);
+
+
+        $empleado_maternidad = Empleado::find($request->empleados_id);
+        $empleado_maternidad->periodo_maternidad = $request->periodo_maternidad;
+        $empleado_maternidad->maternidad = 1;
+        $empleado_maternidad->save();
+
+       return view("especiales.maternidad",["empleados"=>$empleados,"empleados_maternidad"=>$empleados_maternidad]);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+
+
+    public function lactancia(){
+        $empleados = Empleado::all();
+$empleados_lactancia = Empleado::where("lactancia",1)->get();
+        return view("especiales.lactancia",["empleados"=>$empleados,"empleados_lactancia"=>$empleados_lactancia]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function agregarLactancia(){
+        $empleados = Empleado::all();
+        return view ("especiales.lactancia_add",["empleados"=>$empleados]);
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function guardarLactancia(Request $request){
+        $empleados = Empleado::all();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $empleados_lactancia = Empleado::where("lactancia",1)->get();
+      //  return view("especiales.lactancia",["empleados"=>$empleados,"empleados_lactancia"=>$empleados_lactancia]);
+
+
+        $empleado_lactancia = Empleado::find($request->empleados_id);
+        
+        $empleado_lactancia->periodo_lactancia = $request->periodo_lactancia;
+        $empleado_lactancia->lactancia = 1;
+        $empleado_lactancia->save();
+
+       return view("especiales.lactancia",["empleados"=>$empleados,"empleados_lactancia"=>$empleados_lactancia]);
+
     }
 }

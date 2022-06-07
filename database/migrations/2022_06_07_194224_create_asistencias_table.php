@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateAsistenciasTable extends Migration
 {
@@ -14,7 +14,13 @@ class CreateAsistenciasTable extends Migration
     public function up()
     {
         Schema::create('asistencias', function (Blueprint $table) {
-            $table->id();
+            $table->softDeletes();
+            $table->increments('id');
+            $table->integer('empleados_id')->unsigned();
+            $table->foreign('empleados_id')->references('id')->on('empleados');
+            $table->date('fecha_asistencia');	
+            $table->time('horario_entrada');	
+            $table->time('horario_salida');	
             $table->timestamps();
         });
     }

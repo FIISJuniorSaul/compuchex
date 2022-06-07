@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateHoraExtrasTable extends Migration
 {
@@ -14,8 +14,13 @@ class CreateHoraExtrasTable extends Migration
     public function up()
     {
         Schema::create('hora_extras', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->timestamps();
+            $table->date('fecha');
+            $table->integer('cantidad');
+            $table->integer('empleados_id')->unsigned();
+            $table->foreign('empleados_id')->references('id')->on('empleados');
+
         });
     }
 

@@ -82,6 +82,7 @@ class AsistenciaController extends Controller
             $ausencia = Ausencia::create(
                 ["empleados_id" => $request->empleados_id,
                     "tipos_ausencias_id" => $request->tipos_ausencias_id,
+                    
                     "justificado" => $request->justificado,
                     "fecha_ausencia" => $request->fecha_ausencia,
                     "observaciones" => $request->observaciones,
