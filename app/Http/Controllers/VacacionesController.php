@@ -113,6 +113,7 @@ class VacacionesController extends Controller
             'fecha_inicio'=>$fecha_inicio,
             'fecha_finalizacion'=>$fecha_finalizacion,
             'cantidad_dias'=>$cantidad_dias,
+
             'observaciones'=>$request['observaciones']
         ]);
         $empleados = Empleado::all();

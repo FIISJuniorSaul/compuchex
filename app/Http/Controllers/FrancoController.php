@@ -38,6 +38,7 @@ class FrancoController extends Controller
         $empleados = Empleado::all();
         $franco = Franco::create($request->all());
         $francos = Franco::with('empleado')->get();
+
         return view('franco.lista', [
             'francos' => $francos,
             'empleados' => $empleados,

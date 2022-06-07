@@ -55,6 +55,7 @@ class GenerarPdfController extends Controller
         $empleado = Empleado::find($id);
           $ausencias = Ausencia::with("tipo")->where('empleados_id',$id)->get();
           $ausencias = $ausencias->groupBy('tipo.nombre');
+
           $diasTomados = DiasTomados::where('empleados_id',$id)->get();
         $francos_compensatorios = Franco::where('empleados_id',$id)->get();
         $hora_extra= HoraExtra::where('empleados_id',$id)->get();

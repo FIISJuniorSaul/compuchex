@@ -93,6 +93,7 @@ class TipoAusenciaController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\TipoAusencia  $tipoAusencia
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(TipoAusencia $tipoAusencia)

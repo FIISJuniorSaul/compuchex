@@ -19,6 +19,7 @@ class VacacionesEdicionController extends Controller
 
         $vacacion_actualizar = DiasTomados::find($request->vacacion_id);
         $vacacion_actualizar->update($request->all());
+
         $vacacion_actualizar->save();
         return redirect()->route('vacaciones.index')->withErrors(['Actualizado Correctamente']);
 

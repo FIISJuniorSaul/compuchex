@@ -88,6 +88,7 @@ class HoraExtraController extends Controller
     {
         $horaExtra = HoraExtra::create($request->all());
         $empleados = Empleado::all();
+
         $horas = HoraExtra::all();
 
         return view("horasextras.list",['horas'=>$horas,'empleados'=>$empleados]);

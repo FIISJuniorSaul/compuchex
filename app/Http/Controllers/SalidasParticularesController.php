@@ -93,6 +93,7 @@ class SalidasParticularesController extends Controller
         SalidaParticular::destroy($id);
         return redirect()
             ->route('salidas.index')
+
             ->withErrors(['Eliminado Correctamente']);
     }
 }
