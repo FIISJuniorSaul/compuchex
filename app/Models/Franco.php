@@ -1,11 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Franco extends Model
 {
-    use HasFactory;
+    protected $table = "francos_compensatorios";
+
+   protected $fillable = [
+        'empleados_id', 'fecha', 'observaciones'
+    ];
+
+    public function empleado() {
+        return $this->belongsTo("App\Empleado",'empleados_id');
+    }
 }

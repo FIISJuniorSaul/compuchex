@@ -1,11 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App;
+use Carbon\Carbon;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DiaDisponible extends Model
 {
-    use HasFactory;
+
+    protected $table = "dias_disponibles";
+
+    protected $fillable = [
+        'cantidad', 'periodo', 'empleados_id'
+    ];
+
 }

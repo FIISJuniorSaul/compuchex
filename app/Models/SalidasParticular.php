@@ -1,11 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SalidasParticular extends Model
+class SalidaParticular extends Model
 {
-    use HasFactory;
+    //use SoftDeletes;
+    protected $table = "salidas_particulares";
+
+    protected $fillable = [
+        'empleados_id', 'fecha', 'cantidad_horas', 'des'
+    ];
+
+    public function empleado() {
+        return $this->belongsTo("App\Empleado",'empleados_id');
+    }
 }

@@ -1,11 +1,24 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DiasTomados extends Model
 {
-    use HasFactory;
+
+    use SoftDeletes;
+    protected $table = "dias_tomados";
+
+    protected $fillable = [
+        'empleados_id', 'cantidad_dias',
+         'fecha_inicio','fecha_finalizacion','observaciones'
+    ];
+
+    public function empleado(){
+        return $this->belongsTo("App\Empleado",'empleados_id');
+    }
+
+
 }
