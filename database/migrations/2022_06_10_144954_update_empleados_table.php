@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class UpdateEmpleadosTable extends Migration
 {
@@ -13,7 +13,20 @@ class UpdateEmpleadosTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('empleados', function (Blueprint $table) {
+            $table->string('antiguedad')->change();
+
+        });
+
+      
+
+        Schema::table('ausencias', function (Blueprint $table) {
+            $table->string('tipo_ausencia');
+            
+
+        });
+
+    
     }
 
     /**

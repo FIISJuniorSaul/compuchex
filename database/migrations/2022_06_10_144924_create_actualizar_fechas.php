@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateActualizarFechas extends Migration
+class ActualizarFechas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateActualizarFechas extends Migration
      */
     public function up()
     {
-        Schema::create('actualizar_fechas', function (Blueprint $table) {
-            $table->id();
+       
+        Schema::table('empleados', function (Blueprint $table) {
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateActualizarFechas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actualizar_fechas');
+        //
     }
 }
