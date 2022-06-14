@@ -14,7 +14,7 @@ class CreateVacacionesTable extends Migration
     public function up()
     {
         Schema::create('vacaciones', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->timestamps();
         });
     }

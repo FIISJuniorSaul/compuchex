@@ -14,12 +14,13 @@ class CrearSalidasMigration extends Migration
     public function up()
     {
         Schema::create('salidas_particulares', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->timestamps();
             $table->integer("cantidad_horas");
             $table->date('fecha');
-            $table->integer('empleados_id')->unsigned();
-            $table->foreign('empleados_id')->references('id')->on('empleados');
+            $table->unsignedBigInteger('empleados_id');
+            $table->foreign('empleados_id')->references('id')->on('empledos');
+            
         });
     }
 

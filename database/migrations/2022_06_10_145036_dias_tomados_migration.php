@@ -14,9 +14,9 @@ class DiasTomadosMigration extends Migration
     public function up()
     {
         Schema::create('dias_tomados', function (Blueprint $table) {
-            $table->softDeletes();
-            $table->increments('id');
-            $table->integer('empleados_id')->unsigned();
+           // $table->softDeletes();
+            $table->id();
+            $table->unsignedBigInteger('empleados_id');
             $table->foreign('empleados_id')->references('id')->on('empleados');
             $table->integer('cantidad_dias');
             $table->date('fecha_inicio');
