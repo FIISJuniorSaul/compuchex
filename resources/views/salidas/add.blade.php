@@ -50,20 +50,12 @@
 <div class="form-group">
         <div class="form-line">
             <label for="des">Descripcion:</label>
-      
+
           <textarea  class="form-control" name="des" placeholder="Ingrese observaciones aquí" > </textarea>
         </div>
     </div>
-
-
-
                 <button type="submit" class="btn btn-success" style="margin-left:38px">Registrar Salida Particular</button>
-
-
 </form>
-
-
-
 </div>
 </div>
 
