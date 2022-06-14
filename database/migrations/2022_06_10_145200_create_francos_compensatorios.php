@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDiaDisponiblesTable extends Migration
+class CreateFrancosCompensatorios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateDiaDisponiblesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dias_disponibles', function (Blueprint $table) {
-            $table->id ();
+        Schema::create('francos_compensatorios', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
-            $table->integer("cantidad");
-            $table->integer("periodo");
+            $table->date("fecha");
+            $table->string('observaciones');
             $table->unsignedBigInteger('empleados_id');
             $table->foreign('empleados_id')->references('id')->on('empleados');
-            
         });
     }
 
@@ -31,6 +30,6 @@ class CreateDiaDisponiblesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dia_disponibles');
+        //
     }
 }

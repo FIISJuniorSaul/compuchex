@@ -20,7 +20,11 @@ class CrearSalidasMigration extends Migration
             $table->date('fecha');
             $table->unsignedBigInteger('empleados_id');
             $table->foreign('empleados_id')->references('id')->on('empleados');
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> e297cc4 (actualizar las tablas a la nueva version)
         });
     }
 

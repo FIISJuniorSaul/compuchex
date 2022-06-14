@@ -30,8 +30,8 @@ class CreateTipoAusenciasTable extends Migration
         });
 
         Schema::create('tipos_ausencias', function (Blueprint $table) {
-            $table->increments('id');
-            $table->softDeletes();
+            $table->id();
+ //           $table->softDeletes();
             $table->string('nombre');
             $table->timestamps();
         });
