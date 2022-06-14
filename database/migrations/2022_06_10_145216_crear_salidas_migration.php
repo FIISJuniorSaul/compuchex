@@ -19,7 +19,7 @@ class CrearSalidasMigration extends Migration
             $table->integer("cantidad_horas");
             $table->date('fecha');
             $table->unsignedBigInteger('empleados_id');
-            $table->foreign('empleados_id')->references('id')->on('empledos');
+            $table->foreign('empleados_id')->references('id')->on('empleados');
             
         });
     }
