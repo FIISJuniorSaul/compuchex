@@ -18,6 +18,4 @@ class Asistencia extends Model
     {
         return $this->hasMany('App\Asistencia');
     }
-
-
 }

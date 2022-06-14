@@ -14,14 +14,14 @@ class CreateAusenciasTable extends Migration
     public function up()
     {
         Schema::create('ausencias', function (Blueprint $table) {
-            $table->increments('id');
-            $table->softDeletes();
+            $table->id();
+ //           $table->softDeletes();
             $table->timestamps();
-            $table->integer('empleados_id')->unsigned();
+            $table->unsignedBigInteger('empleados_id');
             $table->foreign('empleados_id')->references('id')->on('empleados');
-            $table->integer('tipos_ausencias_id')->unsigned();
+            $table->unsignedBigInteger('tipos_ausencias_id');
             $table->foreign('tipos_ausencias_id')->references('id')->on('tipos_ausencias');
-            $table->boolean('justificado');	
+            $table->boolean('justificado');
             $table->string('observaciones');
             $table->string('inicio_ausencia');
             $table->string('finalizacion_ausencia');

@@ -15,7 +15,7 @@ class CreateTipoAusenciasTable extends Migration
     {
 
         Schema::create('empleados', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('apellido_nombre');
             $table->date('antiguedad');
             $table->string('cuil');
@@ -26,9 +26,9 @@ class CreateTipoAusenciasTable extends Migration
             $table->string('situacion_revista');
             $table->string('area');
             $table->string('dias_vacaciones_adicionales');
-            $table->softDeletes();
+ //           $table->softDeletes();
         });
-        
+
         Schema::create('tipos_ausencias', function (Blueprint $table) {
             $table->increments('id');
             $table->softDeletes();
