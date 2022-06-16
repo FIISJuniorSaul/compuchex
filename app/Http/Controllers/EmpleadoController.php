@@ -33,7 +33,7 @@ class EmpleadoController extends Controller
         return view('empleados.index', ['empleados' => $empleados]);
     }
 
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -97,14 +97,14 @@ class EmpleadoController extends Controller
         //return $diasDisponibles;
 
         return view('ausencias.individual', [
-            'empleado' => $empleado,
-            'ausencias' => $ausencias,
-            'empleados' => $empleados,
-            'diasTomados' => $diasTomados,
-            'diasDisponibles' => $diasDisponibles,
-            'diasHabiles' => $dias_habiles,
-            'horasExtra' => $horasExtra,
-            'francos' => $francos,
+            'empleado' => empleado::findOrfail($id),
+            'ausencias' => ausencias::finOrfail($id),
+            'empleados' => empleados::findOrfail($id),
+            'diasTomados' => diasTomados::findOrfail($id),
+            'diasDisponibles' => diasDisponibles::findOrfail($id),
+            'diasHabiles' => dias_habiles::findOrfail($id),
+            'horasExtra' => horasExtra::findOrfail($id),
+            'francos' => francos::fondOrfail($id),
         ]);
         //return response(['empleado'=>$empleado, 'ausencias'=>$ausencias,'empleados'=>$empleados,'diasTomados'=>$diasTomados]);
     }
@@ -120,8 +120,8 @@ class EmpleadoController extends Controller
         $empleados = Empleado::all();
         $empleado = Empleado::find($id);
         return view('empleados.edit', [
-            'empleado' => $empleado,
-            'empleados' => $empleados,
+            'empleado' => empleado::findOrFail($id),
+            'empleados' => empleados::findOrFail($id),
         ]);
     }
 
@@ -136,7 +136,7 @@ class EmpleadoController extends Controller
     {
         $empleado = Empleado::find($id);
         $empleado->update($request->all());
-        
+
         $empleados = Empleado::all();
         return view('dashboard', ['empleados' => $empleados]);
     }
